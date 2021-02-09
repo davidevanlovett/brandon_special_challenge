@@ -1,0 +1,16 @@
+{
+  "name": "brandon_special_challenge",
+  "version": "0.0.1",
+  "description": "Brandon told me, blame him",
+  "main": "/server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"cd server && nodemon server.js\" \"cd client && npm run start\"",
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\""
+  },
+  "author": "Me",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
