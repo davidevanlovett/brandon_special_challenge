@@ -4,15 +4,18 @@ import {
     Route,
 } from "react-router-dom";
 import Home from "./pages/Home";
-
+import Redirect from "./pages/Redirect";
 function App() {
     return (
         <>
             <Router>
                 <h2>Welcome</h2>
                 <Switch>
-                    <Route>
+                    <Route exact path="/">
                         <Home />
+                    </Route>
+                    <Route path="/r/:eId">
+                        <Redirect />
                     </Route>
                 </Switch>
             </Router>
