@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 
 export default function Redirect() {
-    const {eId} = useParams();
-    
+    const { eId } = useParams();
+
     useEffect(() => {
         axios.get(`/api/urls/${eId}`).then(({ data }) => {
             window.location.href = data.url;

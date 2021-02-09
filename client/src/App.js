@@ -9,7 +9,7 @@ function App() {
     return (
         <>
             <Router>
-                <h2>Welcome</h2>
+                <h2>Welcome to Redirector</h2>
                 <Switch>
                     <Route exact path="/">
                         <Home />
