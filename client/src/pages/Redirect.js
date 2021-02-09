@@ -7,10 +7,9 @@ import {
 export default function Redirect() {
     const {eId} = useParams();
     
-
     useEffect(() => {
         axios.get(`/api/urls/${eId}`).then(({ data }) => {
-            window.location.href = data;
+            window.location.href = data.url;
         })
     })
 
@@ -19,6 +18,5 @@ export default function Redirect() {
             <h2>Redirecting you.....</h2>
         </>
     )
-
 
 }
