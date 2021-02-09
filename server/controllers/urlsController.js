@@ -4,15 +4,15 @@ const db = require('../models');
 
 
 
-router.get('/api/urls/', async (req, res) => {
-    try {
-        const urls = await db.URL.find({});
-        res.json(urls)
-    }
-    catch (err) {
-        res.status(500).send('Internal Server Error');
-    }
-});
+// router.get('/api/urls/', async (req, res) => {
+//     try {
+//         const urls = await db.URL.find({});
+//         res.json(urls)
+//     }
+//     catch (err) {
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 
 /**
@@ -27,7 +27,7 @@ router.get('/api/urls/:eId', async (req, res) => {
     try {
         const url = await db.URL.findOne({ eId: eId });
         if (url) {
-            res.json(`http://${url.url}`);
+            res.json({url:`http${url.https ? 's':''}://${url.url}`});
         }
         else {
             res.status(404).send('Link Not Found');
@@ -59,18 +59,14 @@ router.post('/api/urls/', async (req, res) => {
 
 });
 
-router.delete('/api/urls', async (req, res) => {
-    try {
-        const results = await db.URL.deleteMany({});
-        res.json(results);
-    }
-    catch(err){
-        res.json(err);
-    }
-})
-
-
-
-
+// router.delete('/api/urls', async (req, res) => {
+//     try {
+//         const results = await db.URL.deleteMany({});
+//         res.json(results);
+//     }
+//     catch(err){
+//         res.json(err);
+//     }
+// })
 
 module.exports = router;

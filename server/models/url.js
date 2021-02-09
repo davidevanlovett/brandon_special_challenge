@@ -10,6 +10,10 @@ const urlSchema = new Schema({
             type: Number,
             default: 0
         }
+    },
+    https: {
+        type: Boolean,
+        default: false
     }
     // Index?
 });
@@ -17,7 +21,21 @@ const urlSchema = new Schema({
 
 
 urlSchema.pre('save', function (next) {
-    this.eId = encryptURL(this.url);
+    const parts = this.url.split('://');
+    if(parts.length === 0){
+        const err = new Error('Bad URL Supplied');
+        next(err);
+    }
+    else if(parts.length === 1){
+        this.https = 0;
+        this.url = parts[0];
+        this.eId = encryptURL(this.url);
+    }
+    else if(parts.length === 2){
+        this.https = parts[0] === 'https';
+        this.url = parts[1];
+        this.eId = encryptURL(this.url);
+    }
     next();
 });
 /**
