@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const urlRoutes = require('./controllers/urlsController');
+
 const PORT = process.env.PORT || 3001;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/url_shortening', {useNewUrlParser: true, useUnifiedTopology: true});

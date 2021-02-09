@@ -27,7 +27,7 @@ router.get('/api/urls/:eId', async (req, res) => {
     try {
         const url = await db.URL.findOne({ eId: eId });
         if (url) {
-            res.json(url.url);
+            res.json(`http://${url.url}`);
         }
         else {
             res.status(404).send('Link Not Found');
