@@ -5,6 +5,7 @@
   "main": "/server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && npm run start",
     "dev": "concurrently \"cd server && nodemon server.js\" \"cd client && npm run start\"",
     "install": "concurrently \"cd client && npm install\" \"cd server && npm install\""
   },
