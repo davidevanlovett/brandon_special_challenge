@@ -17,7 +17,7 @@ export default function Home() {
             <h2>Enter URL to shorten</h2>
             <input type="text" onChange={event => setUrl(event.target.value)} />
             <button onClick={shortenURL}>Shorten </button>
-            <h2>/r/{shortened}</h2>
+            <h2>{window.location.href}r/{shortened}</h2>
             <Link to={`/r/${shortened}`}>Test</Link>
         </>
     )
