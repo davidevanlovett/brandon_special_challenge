@@ -2,14 +2,16 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const urlRoutes = require('./controllers/urlsController');
-const PORT = process.env.PORT || 3000;
-
-
+const PORT = process.env.PORT || 3001;
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/url_shortening', {useNewUrlParser: true, useUnifiedTopology: true});
 
 ///////////////
 // Middleware
 ///////////////
 app.use(express.static('../client/build'));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 ///////////////
 // Routes
@@ -20,9 +22,11 @@ app.get("*", (req,res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is listening at localhost:${PORT}`);
-})
+mongoose.connect('mongodb://localhost/url_shortening', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is listening at localhost:${PORT}`);
+    });
+});
 
 
 

@@ -1,5 +1,5 @@
-const URL = require('url');
-const Filter = require('filter');
+const URL = require('./url');
+const Filter = require('./filter');
 
 module.exports = {
     URL, 
